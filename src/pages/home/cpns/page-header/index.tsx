@@ -24,13 +24,13 @@ const PageHeader = React.memo(() => {
       </View>
 
       <BasePopup mode="left" show={show} setShow={() => setShow(false)}>
-        {/* <View className={styles.left_wrap}>
+        <View className={styles.left_wrap}>
           {Array.from({ length: 100 }).map((_, index) => (
             <View key={index} className={styles.item}>
               {index}
             </View>
           ))}
-        </View> */}
+        </View>
       </BasePopup>
     </View>
   );
