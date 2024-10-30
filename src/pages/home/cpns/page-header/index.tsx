@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "@tarojs/components";
 import { WapNav } from "@taroify/icons";
-import { Popup } from "@taroify/core";
+import { BasePopup } from "@/base-ui";
 
 import styles from "./index.module.less";
 
@@ -13,7 +13,7 @@ const PageHeader = React.memo(() => {
   }, []);
 
   return (
-    <>
+    <View>
       <View className={styles.page_header}>
         <View className={styles.icon} onClick={handleIconClick}>
           <WapNav size="25" />
@@ -23,18 +23,16 @@ const PageHeader = React.memo(() => {
         </View>
       </View>
 
-      <Popup
-        open={show}
-        placement="left"
-        style={{
-          height: "100vh",
-          width: "40vw",
-          borderRadius: "0 10rpx 10rpx 0",
-        }}
-      >
-        <View className={styles["right-wrap"]}>123</View>
-      </Popup>
-    </>
+      <BasePopup mode="left" show={show} setShow={() => setShow(false)}>
+        {/* <View className={styles.left_wrap}>
+          {Array.from({ length: 100 }).map((_, index) => (
+            <View key={index} className={styles.item}>
+              {index}
+            </View>
+          ))}
+        </View> */}
+      </BasePopup>
+    </View>
   );
 });
 

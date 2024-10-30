@@ -1,7 +1,9 @@
 import { defineConfig, type UserConfigExport } from "@tarojs/cli";
 
+import path from "path";
 import devConfig from "./dev";
 import prodConfig from "./prod";
+
 
 // https://taro-docs.jd.com/docs/next/config#defineconfig-辅助函数
 export default defineConfig<"vite">(async (merge, { command, mode }) => {
@@ -24,6 +26,9 @@ export default defineConfig<"vite">(async (merge, { command, mode }) => {
       options: {},
     },
     framework: "react",
+    alias: {
+      "@": path.resolve(__dirname, "..", "src"), // 添加这一行
+    },
     compiler: "vite",
     mini: {
       postcss: {
