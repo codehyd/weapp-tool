@@ -1,31 +1,38 @@
 import React from "react";
-import BasePopup, { IBaseuiPopupProps } from "../index";
+import BasePopup, { IBaseuiPopupProps } from "../";
+import { IBasePopupMode } from "../type";
 
-function WithPopup(WrapperComponent: React.FC<any>) {
-  const [show, setShow] = React.useState(false);
+export interface IWithPopupProps extends React.PropsWithChildren<any> {
+  mode: IBasePopupMode;
+}
 
-  const openPopup = () => {
-    setShow(true);
-  };
+const withPopup = (WrappedComponent: React.ComponentType<any>) => {
+  const HOC = (props: IWithPopupProps) => {
+    const [show, setShow] = React.useState(false);
 
-  const closePopup = () => {
-    setShow(false);
-  };
+    const openPopup = React.useCallback(() => {
+      setShow(true);
+    }, []);
 
-  return (config: any) => {
-    console.log(12, config);
+    const closePopup = React.useCallback(() => {
+      setShow(false);
+    }, []);
+
     return (
       <>
-        <WrapperComponent
+        <BasePopup show={show} setShow={setShow} mode={props.mode}>
+          {props.children}
+        </BasePopup>
+        <WrappedComponent
+          {...props}
           openPopup={openPopup}
           closePopup={closePopup}
-        ></WrapperComponent>
-        <BasePopup {...config} show={show} setShow={setShow}>
-          {config.children}
-        </BasePopup>
+        />
       </>
     );
   };
-}
 
-export default WithPopup;
+  return HOC;
+};
+
+export default withPopup;

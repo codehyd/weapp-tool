@@ -1,17 +1,16 @@
 import React from "react";
 import { View } from "@tarojs/components";
-import { WapNav } from "@taroify/icons";
+import { Arrow, Contact, Setting, WapNav } from "@taroify/icons";
 import { BaseHocWithPopup } from "@/base-ui";
-// import { WithPopupProps } from "@/base-ui/popup/hoc/WithPopup";
 
 import styles from "./index.module.less";
 
-const PageHeader = React.memo((props: any) => {
-  console.log(props);
+// 显示内容
+const ShowContentEl = (props: any) => {
   return (
-    <View>
-      <View className={styles.page_header}>
-        <View className={styles.icon} onClick={props.openPopup}>
+    <View className={styles.page_content}>
+      <View className={styles.page_header} onClick={props.openPopup}>
+        <View className={styles.icon}>
           <WapNav size="25" />
         </View>
         <View className={styles.content}>
@@ -20,39 +19,36 @@ const PageHeader = React.memo((props: any) => {
       </View>
     </View>
   );
-});
+};
 
-const PopupContent = () => {
-  const [count, setCount] = React.useState(0);
-
+// 弹出内容
+const PopupContentEl = () => {
   return (
     <View className={styles.left_wrap}>
-      <View className={styles.item} onClick={() => setCount(count + 1)}>
-        点击次数: {count}
+      <View className={styles.item_content}>
+        <Setting size="25" />
+        <View className={styles.item_text}>设置</View>
+        <Arrow />
       </View>
-      {Array.from({ length: 100 }).map((_, index) => (
-        <View key={index} className={styles.item}>
-          {index}
-        </View>
-      ))}
+      <View className={styles.item_content}>
+        <Contact size="25" />
+        <View className={styles.item_text}>关于我们</View>
+        <Arrow />
+      </View>
     </View>
   );
 };
-export default () =>
-  BaseHocWithPopup(PageHeader)({ mode: "left", children: <PopupContent /> });
 
-// const config: WithPopupProps = {
-//   config: { mode: "left", content: <PopupContent /> },
-// };
+// 包装显示内容
+const WrappedContentEl = BaseHocWithPopup(ShowContentEl);
 
-// const newPageHeader = React.memo(() => {
-//   return (
-//     <>
-//       <BaseHocWithPopup {...config}>
-//         <PageHeader />
-//       </BaseHocWithPopup>
-//     </>
-//   );
-// });
+// 页面头部
+const PageHeader = React.memo(() => {
+  return (
+    <WrappedContentEl mode="left">
+      <PopupContentEl></PopupContentEl>
+    </WrappedContentEl>
+  );
+});
 
-// export default newPageHeader;
+export default PageHeader;

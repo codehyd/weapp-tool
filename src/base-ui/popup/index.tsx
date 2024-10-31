@@ -2,12 +2,12 @@ import React from "react";
 import { Popup } from "@taroify/core";
 import { ScrollView, View } from "@tarojs/components";
 import styles from "./index.module.less";
+import { IBasePopupMode } from "./type";
 
-export interface IBaseuiPopupProps {
+export interface IBaseuiPopupProps extends React.PropsWithChildren<any> {
   show: boolean;
   setShow: (show: boolean) => void;
-  mode: "top" | "bottom" | "left" | "right" | "center";
-  children?: React.ReactNode;
+  mode: IBasePopupMode;
   radius?: number;
   titleChildren?: React.ReactNode;
 }

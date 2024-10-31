@@ -26,4 +26,11 @@ export default defineAppConfig({
       },
     ],
   },
+
+  subPackages: [
+    {
+      root: "pages-chunks",
+      pages: ["time-screen/index"],
+    },
+  ],
 });
