@@ -3,9 +3,9 @@ import { Popup } from "@taroify/core";
 import { ScrollView, View } from "@tarojs/components";
 import styles from "./index.module.less";
 
-interface IBaseuiPopupProps {
+export interface IBaseuiPopupProps {
   show: boolean;
-  setShow: () => void;
+  setShow: (show: boolean) => void;
   mode: "top" | "bottom" | "left" | "right" | "center";
   children?: React.ReactNode;
   radius?: number;
