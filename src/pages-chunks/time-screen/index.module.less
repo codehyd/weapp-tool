@@ -1,27 +1,48 @@
+@import "@/app.less";
+
 .time_screen {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  padding: 120rpx 0;
+  background: #ffffff;
+  font-size: 14rpx;
 }
 
-.wrap {
-  flex-direction: column;
+.time_wrap {
   display: flex;
   justify-content: space-around;
   height: 100%;
   align-items: center;
+  padding: 0 60rpx;
 }
 
 .time_item {
-  width: 650rpx;
-  height: 27%;
+  flex: 1;
+  margin: 0 10rpx;
+  /* width: 40rpx; */
+  height: 200rpx;
   display: flex;
   overflow: hidden;
   justify-content: center;
   align-items: center;
   background-color: #fdfaf3;
-  border-radius: 50rpx;
+  border-radius: 20rpx;
   font-weight: 700;
-  font-size: 100rpx;
+  font-size: 70rpx;
+}
+
+.goback_control {
+  position: fixed;
+  top: 14rpx;
+  left: 20rpx;
+}
+
+.controls_wrap {
+  position: fixed;
+  bottom: @safe-bottom;
+  left: 20rpx;
+}
+
+.controls_item {
+  margin: 0 20rpx 0 0;
 }

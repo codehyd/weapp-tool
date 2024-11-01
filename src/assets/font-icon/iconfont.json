@@ -1,0 +1,23 @@
+{
+  "id": "4730982",
+  "name": "my_tool",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "25771296",
+      "name": "深色模式",
+      "font_class": "shensemoshi",
+      "unicode": "e6f5",
+      "unicode_decimal": 59125
+    },
+    {
+      "icon_id": "37577023",
+      "name": "skin-light",
+      "font_class": "a-qiansemoshi1",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    }
+  ]
+}
